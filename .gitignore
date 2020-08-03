@@ -1,0 +1,5 @@
+.ccls*
+*.out
+*.exe
+*.o
+*.gch
