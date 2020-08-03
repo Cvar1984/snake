@@ -6,22 +6,17 @@ namespace Cvar1984
 {
     class Window
     {
-        public:
+        protected:
             WINDOW *win;
             int height;
             int width;
             int startY;
             int startX;
 
-            Window(int height, int width, int startY, int startX)
+            void deleteWindow()
             {
-                initscr();
-                noecho();
-                raw();
-                this->height = height;
-                this->width = width;
-                this->startY = startY;
-                this->startX = startX;
+                wrefresh(this->win);
+                delwin(this->win);
             }
             void createWindow()
             {
@@ -31,11 +26,20 @@ namespace Cvar1984
                         this->startY,
                         this->startX
                         );
-            }
-            void deleteWindow()
-            {
                 wrefresh(this->win);
-                delwin(this->win);
+            }
+
+        public:
+            Window(int height, int width, int startY, int startX)
+            {
+                initscr();
+                noecho();
+                raw();
+                this->height = height;
+                this->width = width;
+                this->startY = startY;
+                this->startX = startX;
+                this->createWindow();
             }
             void moveWindow(int height, int width, int startY, int startX)
             {
