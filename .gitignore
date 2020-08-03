@@ -3,3 +3,6 @@
 *.exe
 *.o
 *.gch
+*.bin
+*.cmake
+/build
